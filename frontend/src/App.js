@@ -1,14 +1,15 @@
 import React from 'react';
-import { Box, Typography, Container } from '@mui/material';
+import { Routes, Route } from 'react-router-dom';
+
+import Home from './pages/Home';
+import MainLayout from './components/layout/MainLayout';
 
 export default function App() {
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Material UI Create React App example
-        </Typography>
-      </Box>
-    </Container>
+    <Routes>
+      <Route path="/" element={<MainLayout />}>
+        <Route path="" element={<Home />} />
+      </Route>
+    </Routes>
   );
 }
