@@ -39,7 +39,6 @@ export default class ReviewsController {
         review,
         date,
       );
-      console.log(ReviewResponse);
 
       var { error } = ReviewResponse;
       if (error) {

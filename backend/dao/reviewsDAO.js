@@ -22,8 +22,8 @@ export default class ReviewsDAO {
       const reviewDoc = {
         name: user.name,
         user_id: user._id,
-        date: date,
-        review: review,
+        date,
+        review,
         movie_id: new ObjectId(movieId),
       };
       return await reviews.insertOne(reviewDoc);

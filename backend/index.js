@@ -13,7 +13,6 @@ async function main() {
     await client.connect();
     await MoviesDAO.injectDB(client);
     await ReviewsDAO.injectDB(client);
-
     app.listen(port, () => {
       console.log('server is running on port:' + port);
     });
