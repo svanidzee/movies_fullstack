@@ -18,8 +18,8 @@ export default class ReviewsController {
         review,
         date,
       );
-      console.log(ReviewResponse);
 
+      console.log(ReviewResponse);
       res.json({ status: 'success ' });
     } catch (e) {
       res.status(500).json({ error: e.message });
@@ -51,6 +51,18 @@ export default class ReviewsController {
           'unable to update review. User may not be original poster',
         );
       }
+      res.json({ status: 'success ' });
+    } catch (e) {
+      res.status(500).json({ error: e.message });
+    }
+  }
+
+  static async apiDeleteReview(req, res) {
+    try {
+      const reviewId = req.body.review_id;
+      const userId = req.body.user_id;
+      const ReviewResponse = await ReviewsDAO.deleteReview(reviewId, userId);
+
       res.json({ status: 'success ' });
     } catch (e) {
       res.status(500).json({ error: e.message });
