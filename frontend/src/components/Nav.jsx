@@ -13,7 +13,7 @@ export default function Nav() {
       <Link to="/" style={{ marginRight: '20px' }}>
         Home
       </Link>
-      <Link to="/about">Movies</Link>
+      <Link to="/movies">Movies</Link>
     </div>
   );
 }
