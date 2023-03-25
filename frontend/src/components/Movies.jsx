@@ -10,6 +10,7 @@ import {
   CardContent,
   CardMedia,
   Typography,
+  TextField,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 
@@ -17,23 +18,26 @@ export default function Movies() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [movies, setMovies] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+
   console.log(movies);
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:5000/api/v1/movies?page=1',
+          `http://localhost:5000/api/v1/movies?page=${currentPage}`,
         );
         setIsLoaded(true);
         setMovies(response.data.movies);
+        setCurrentPage(response.data.page);
       } catch (error) {
         setIsLoaded(true);
         setError(error);
       }
     };
     fetchUsers();
-  }, []);
+  }, [currentPage]);
 
   if (error) return <div>{error.message}</div>;
   if (!isLoaded) return <div>Loading...</div>;
@@ -81,6 +85,13 @@ export default function Movies() {
           </Grid>
         ))}
       </Grid>
+      <Button
+        onClick={() => {
+          setCurrentPage(currentPage + 1);
+        }}
+      >
+        Get next Pager
+      </Button>
     </Container>
   );
 }

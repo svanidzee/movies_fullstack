@@ -12,6 +12,17 @@ import {
   CardMedia,
   Typography,
 } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import ButtonBase from '@mui/material/ButtonBase';
+
+const Img = styled('img')({
+  margin: 'auto',
+  display: 'block',
+  maxWidth: '100%',
+  maxHeight: '100%',
+});
+
 export default function Movie() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -39,44 +50,64 @@ export default function Movie() {
   if (!isLoaded) return <div>Loading...</div>;
 
   return (
-    <Container sx={{ py: 8 }} maxWidth="lg">
-      <Grid container spacing={4}>
-        <Grid item key={movie._id} xs={12} sm={6} md={6}>
-          <Card
-            sx={{
-              width: '500px',
-              height: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
-            <CardMedia
-              component="img"
-              sx={
-                {
-                  // height: '700px',
-                }
-              }
-              image={movie?.poster}
-              alt="random"
-            />
-
-            <CardContent sx={{ flexGrow: 1 }}>
-              <Typography gutterBottom variant="h5" component="h2">
-                {movie.title}
+    <Paper
+      component={Container}
+      sx={{ py: 8 }}
+      maxWidth="lg"
+      //   sx={{
+      //     p: 2,
+      //     margin: 'auto',
+      //     maxWidth: 500,
+      //     flexGrow: 1,
+      //     backgroundColor: (theme) =>
+      //       theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+      //   }}
+    >
+      <Grid container spacing={2}>
+        <Grid item>
+          <ButtonBase sx={{ width: 428, height: 428 }}>
+            <Img alt="complex" src={movie.poster} />
+          </ButtonBase>
+        </Grid>
+        <Grid item xs={12} sm container>
+          <Grid item xs container direction="column" spacing={2}>
+            <Grid item xs>
+              <Typography gutterBottom variant="subtitle1" component="div">
+                Movie Info
               </Typography>
-              <Typography>{movie.plot}</Typography>
-              <Typography variant="caption" fontSize={15}>
-                IMDB Rating: {movie.imdb.rating}{' '}
+              {/* <Typography variant="body2" gutterBottom>
+                Genre: {movie.genres[0]}
               </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small">View</Button>
-              <Button size="small">Edit</Button>
-            </CardActions>
-          </Card>
+              {movie.directors.map((d) => (
+                <Typography variant="body2" color="text.secondary">
+                  Director: {d}
+                </Typography>
+              ))}
+              {movie.writers.map((w) => (
+                <Typography variant="body2" color="text.secondary">
+                  Writers: {w}
+                </Typography>
+              ))}
+              <Typography variant="body2" color="text.secondary">
+                Release Date: {movie.year}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Plot: {movie.fullplot}
+              </Typography> */}
+            </Grid>
+            <Grid item>
+              <Typography sx={{ cursor: 'pointer' }} variant="body2">
+                Remove
+              </Typography>
+            </Grid>
+          </Grid>
+          {/* <Grid item>
+            <Typography variant="subtitle1" component="div">
+              {movie.directors[0]}
+            </Typography>
+          </Grid> */}
         </Grid>
       </Grid>
-    </Container>
+    </Paper>
   );
 }
