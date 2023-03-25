@@ -1,9 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import MainLayout from './components/layout/MainLayout';
-import Movies from './components/Movies';
-import Movie from './components/Movie';
+import { MainLayout } from './components';
+import { Movies, Movie } from './pages';
 
 export default function App() {
   return (
