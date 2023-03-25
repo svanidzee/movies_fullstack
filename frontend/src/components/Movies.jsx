@@ -11,6 +11,7 @@ import {
   CardMedia,
   Typography,
 } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export default function Movies() {
   const [error, setError] = useState(null);
@@ -22,7 +23,7 @@ export default function Movies() {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:5000/api/v1/movies?page=1100',
+          'http://localhost:5000/api/v1/movies?page=1',
         );
         setIsLoaded(true);
         setMovies(response.data.movies);
@@ -41,29 +42,42 @@ export default function Movies() {
     <Container sx={{ py: 8 }} maxWidth="lg">
       <Grid container spacing={4}>
         {movies?.map((movie) => (
-          <Grid item key={movie._id} xs={12} sm={6} md={3}>
-            <Card
-              sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-            >
-              <CardMedia
-                component="img"
-                // sx={{
-                //   pt: '56.25%',
-                // }}
-                image={movie?.poster}
-                alt="random"
-              />
-              <CardContent sx={{ flexGrow: 1 }}>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {movie.title}
-                </Typography>
-                <Typography>{movie.plot}</Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small">View</Button>
-                <Button size="small">Edit</Button>
-              </CardActions>
-            </Card>
+          <Grid item key={movie._id} xs={12} sm={6} md={6}>
+            <Link to={`/movies/${movie._id}`}>
+              <Card
+                sx={{
+                  width: '500px',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  sx={
+                    {
+                      // height: '700px',
+                    }
+                  }
+                  image={movie?.poster}
+                  alt="random"
+                />
+
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {movie.title}
+                  </Typography>
+                  <Typography>{movie.plot}</Typography>
+                  <Typography variant="caption" fontSize={15}>
+                    IMDB Rating: {movie.imdb.rating}{' '}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button size="small">View</Button>
+                  <Button size="small">Edit</Button>
+                </CardActions>
+              </Card>
+            </Link>
           </Grid>
         ))}
       </Grid>

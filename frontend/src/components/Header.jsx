@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <div>
       <Nav />
-      <h1>Header</h1>
+      <h1>American Cinematography Through the Ages</h1>
     </div>
   );
 }
