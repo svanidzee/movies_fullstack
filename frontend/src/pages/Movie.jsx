@@ -10,6 +10,8 @@ import {
   ButtonBase,
 } from '@mui/material';
 
+import { QueryResult } from '../components';
+
 const Img = styled('img')({
   margin: 'auto',
   display: 'block',
@@ -39,41 +41,42 @@ export default function Movie() {
     fetchMovie();
   }, []);
 
-  if (error) return <div>{error.message}</div>;
-  if (!isLoaded) return <div>Loading...</div>;
-
   return (
-    <Paper component={Container} sx={{ py: 8 }} maxWidth="lg">
-      <Grid container spacing={2}>
-        <Grid item>
-          <ButtonBase sx={{ width: 428, height: 450 }}>
-            <Img alt="complex" src={movie?.poster} />
-          </ButtonBase>
-        </Grid>
-        <Grid item xs={12} sm container>
-          <Grid item xs container direction="column" alignItems="flex-start">
-            <Grid item sm width="680px">
-              <Typography variant="title" component="div" gutterBottom>
-                Title: {movie.title}({movie.year})
-              </Typography>
-              <Typography variant="body2">IMDB: {movie.imdb.rating}</Typography>
-              <Typography variant="body2" gutterBottom textAlign="justify">
-                Directors: {'' + movie.directors}
-              </Typography>
+    <QueryResult error={error} loading={isLoaded} data={movie}>
+      <Paper component={Container} sx={{ py: 8 }} maxWidth="lg">
+        <Grid container spacing={2}>
+          <Grid item>
+            <ButtonBase sx={{ width: 428, height: 450 }}>
+              <Img alt="complex" src={movie?.poster} />
+            </ButtonBase>
+          </Grid>
+          <Grid item xs={12} sm container>
+            <Grid item xs container direction="column" alignItems="flex-start">
+              <Grid item sm width="680px">
+                <Typography variant="title" component="div" gutterBottom>
+                  Title: {movie?.title}({movie?.year})
+                </Typography>
+                <Typography variant="body2">
+                  IMDB: {movie?.imdb?.rating}
+                </Typography>
+                <Typography variant="body2" gutterBottom textAlign="justify">
+                  Directors: {'' + movie?.directors}
+                </Typography>
 
-              <Typography variant="body2" gutterBottom textAlign="justify">
-                Genres: {'' + movie.genres}
-              </Typography>
-              <Typography variant="body2" gutterBottom textAlign="justify">
-                Cast: {'' + movie.cast}
-              </Typography>
-              <Typography variant="body2" gutterBottom>
-                Plot: {movie.fullplot}
-              </Typography>
+                <Typography variant="body2" gutterBottom textAlign="justify">
+                  Genres: {'' + movie?.genres}
+                </Typography>
+                <Typography variant="body2" gutterBottom textAlign="justify">
+                  Cast: {'' + movie?.cast}
+                </Typography>
+                <Typography variant="body2" gutterBottom>
+                  Plot: {movie?.fullplot}
+                </Typography>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
-      </Grid>
-    </Paper>
+      </Paper>
+    </QueryResult>
   );
 }

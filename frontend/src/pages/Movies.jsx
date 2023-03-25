@@ -12,29 +12,11 @@ import {
 } from '@mui/material';
 
 import { Button, QueryResult } from '../components';
+import { useFetchMovies } from '../hooks';
 
 export default function Movies() {
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [movies, setMovies] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
-
-  useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:5000/api/v1/movies?page=${currentPage}`,
-        );
-        setIsLoaded(true);
-        setMovies(response.data.movies);
-        setCurrentPage(response.data.page);
-      } catch (error) {
-        setIsLoaded(true);
-        setError(error);
-      }
-    };
-    fetchMovies();
-  }, [currentPage]);
+  const { movies, currentPage, setCurrentPage, error, isLoaded } =
+    useFetchMovies();
 
   return (
     <Container sx={{ py: 8 }} maxWidth="xl">
