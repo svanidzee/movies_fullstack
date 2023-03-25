@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useApi } from './';
 
-export default function useFetchCharacters() {
+export default function useFetchMovies() {
   const { getMovies } = useApi();
 
   const [error, setError] = useState(null);

@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 
 import { QueryResult } from '../components';
+import { useFetchMovie } from '../hooks';
 
 const Img = styled('img')({
   margin: 'auto',
@@ -20,26 +21,9 @@ const Img = styled('img')({
 });
 
 export default function Movie() {
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [movie, setMovie] = useState({});
   let { id } = useParams();
-
-  useEffect(() => {
-    const fetchMovie = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:5000/api/v1/movies/id/${id}`,
-        );
-        setIsLoaded(true);
-        setMovie(response.data);
-      } catch (error) {
-        setIsLoaded(true);
-        setError(error);
-      }
-    };
-    fetchMovie();
-  }, []);
+  console.log(id);
+  const { movie, error, isLoaded } = useFetchMovie(id);
 
   return (
     <QueryResult error={error} loading={isLoaded} data={movie}>
