@@ -20,7 +20,7 @@ export default function useFetchMovie(id) {
       }
     };
     fetchMovie();
-  }, [id, getMovie]);
+  }, [id]);
 
   return { movie, error, isLoaded };
 }

@@ -1,22 +1,22 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { Box, styled } from '@mui/material';
 
 import { Header } from './';
 
+const Div = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+});
+
 export default function MainLayout() {
   return (
-    <div
-      className="wrapper"
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-    >
+    <Div>
       <Header />
-      <div className="content">
+      <Box>
         <Outlet />
-      </div>
-    </div>
+      </Box>
+    </Div>
   );
 }

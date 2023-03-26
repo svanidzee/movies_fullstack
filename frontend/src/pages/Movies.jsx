@@ -1,15 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import {
-  Container,
-  Grid,
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-} from '@mui/material';
+import { Container, Grid } from '@mui/material';
 
-import { Button, QueryResult } from '../components';
+import { QueryResult, Pagination, MoviesCard } from '../components';
 import { useFetchMovies } from '../hooks';
 
 export default function Movies() {
@@ -21,63 +13,10 @@ export default function Movies() {
       <QueryResult error={error} loading={isLoaded} data={movies}>
         <Grid container spacing={2}>
           {movies?.map((movie) => (
-            <Grid item key={movie._id} xs={12} sm={6} md={3}>
-              <Card
-                component={Link}
-                to={`/movies/${movie._id}`}
-                sx={{
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  textDecoration: 'none',
-                }}
-              >
-                <CardMedia
-                  component="img"
-                  sx={{
-                    height: '100%',
-                    maxHeight: '500px',
-                  }}
-                  image={movie?.poster}
-                  alt="random"
-                />
-
-                <CardContent
-                  sx={{ flexGrow: 1 }}
-                  component={Grid}
-                  item
-                  xs
-                  container
-                  direction="row"
-                  justifyContent="space-between"
-                >
-                  <Typography gutterBottom variant="h5" fontSize={19}>
-                    {movie.title}({movie.year})
-                  </Typography>
-                  <Typography gutterBottom variant="h5" fontSize={19}>
-                    {movie.imdb.rating}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
+            <MoviesCard movie={movie} />
           ))}
         </Grid>
-        <Grid item xs container direction="row" justifyContent="space-between">
-          <Button
-            onClick={() => {
-              setCurrentPage(currentPage - 1);
-            }}
-          >
-            Get Previus Page
-          </Button>
-          <Button
-            onClick={() => {
-              setCurrentPage(currentPage + 1);
-            }}
-          >
-            Get next Page
-          </Button>
-        </Grid>
+        <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
       </QueryResult>
     </Container>
   );
