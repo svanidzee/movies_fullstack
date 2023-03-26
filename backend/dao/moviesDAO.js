@@ -1,5 +1,4 @@
-import mongodb from 'mongodb';
-const ObjectId = mongodb.ObjectId;
+import { ObjectId } from 'mongodb';
 
 let movies;
 
@@ -66,17 +65,6 @@ export default class MoviesDAO {
     } catch (e) {
       console.error(`Unable to issue find command, ${e}`);
       return { moviesList: [], totalNumMovies: 0 };
-    }
-  }
-
-  static async getRatings() {
-    let ratings = [];
-    try {
-      ratings = await movies.distinct('rated');
-      return ratings;
-    } catch (e) {
-      console.error(`unable to get ratings, $(e)`);
-      return ratings;
     }
   }
 }

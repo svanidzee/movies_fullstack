@@ -44,14 +44,4 @@ export default class MoviesController {
       res.status(500).json({ error: e });
     }
   }
-
-  static async apiGetRatings(req, res) {
-    try {
-      let propertyTypes = await MoviesDAO.getRatings();
-      res.json(propertyTypes);
-    } catch (e) {
-      console.log(`api,${e}`);
-      res.status(500).json({ error: e });
-    }
-  }
 }

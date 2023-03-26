@@ -80,12 +80,10 @@ const theme = createTheme({
     },
     MuiButtonBase: {
       defaultProps: {
-        // The props to change the default for.
-        disableRipple: true, // No more ripple, on the whole application 💣!
+        disableRipple: true,
       },
     },
   },
 });
 
 export default theme;
-// sx={{ py: 8 }} maxWidth="xl"
