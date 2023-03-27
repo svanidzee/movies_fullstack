@@ -8,7 +8,7 @@ export default function MoviesCard({ movie }) {
       <Card component={Link} to={`/movies/${movie._id}`}>
         <CardMedia
           component="img"
-          image={movie?.poster}
+          image={movie.poster ? movie.poster : require('../utils/img/no.jpg')}
           alt={movie.poster ? movie.title : 'No image avaliable'}
         />
 

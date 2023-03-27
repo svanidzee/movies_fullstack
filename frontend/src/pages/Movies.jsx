@@ -9,11 +9,11 @@ export default function Movies() {
     useFetchMovies();
 
   return (
-    <Container sx={{ py: 8 }} maxWidth="xl">
+    <Container sx={{ py: 1 }} maxWidth="xl">
       <QueryResult error={error} loading={isLoaded} data={movies}>
         <Grid container spacing={2}>
           {movies?.map((movie) => (
-            <MoviesCard movie={movie} />
+            <MoviesCard key={movie._id} movie={movie} />
           ))}
         </Grid>
         <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />

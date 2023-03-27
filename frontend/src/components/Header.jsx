@@ -1,12 +1,12 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 
 export default function Header() {
   return (
-    <Box paddingY={4}>
+    <Container variant="header" sx={{ paddingY: 2 }}>
       <Typography variant="caption">
         American Cinematography Through the Ages
       </Typography>
-    </Box>
+    </Container>
   );
 }
