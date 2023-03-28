@@ -4,10 +4,12 @@ import { createBreakpoints } from '@mui/system';
 const breakpoints = createBreakpoints({});
 const black = '#000000';
 const gray = '#f3f3f3';
+const white = '#ffffff';
 
 const theme = createTheme({
   palette: {
     background: {
+      default: white,
       pager: gray,
     },
     common: {
@@ -16,8 +18,10 @@ const theme = createTheme({
   },
   typography: {
     fontSize: 17,
-    fontFamily: 'Staatliches, cursive',
-    fontWeightLight: 300,
+    // fontFamily: 'Staatliches, cursive',
+    // fontFamily: 'Montserrat, sans-serif',
+    fontFamily: 'Roboto Mono, sans-serif',
+    fontWeightLight: 700,
     fontWeightRegular: 400,
     fontWeightMedium: 500,
 
@@ -80,6 +84,38 @@ const theme = createTheme({
             // [breakpoints.down('md')]: {
             //   textAlign: 'center',
             // },
+          },
+        },
+      ],
+    },
+    MuiPaper: {
+      variants: [
+        {
+          props: { variant: 'movie-wrapper' },
+          style: {
+            // borderRadius: '10px',
+            // boxShadow: '10px 10px 5px 0px rgba(0,0,0,0.75)',
+            // boxShadow: '0 0 0 1px rgba(#000, .05), 0 3px 8px 0',
+            // backgroundColor: 'green',
+            maxWidth: '50em',
+            minWidth: '21em',
+            minHeight: '30em',
+            paddingTop: 15,
+            // display: 'flex',
+            // flexDirection: 'row',
+            // alignItems: 'center',
+            // justifyContent: 'center',
+            // padding: 40,
+            // marginTop: '2em',
+            // marginLeft: '10%',
+            // [breakpoints.down('xs')]: {
+            //   // backgroundColor: 'green',
+            //   maxWidth: '23em',
+            // },
+            [breakpoints.down('sm')]: {
+              backgroundColor: 'red',
+              maxWidth: '25em',
+            },
           },
         },
       ],
