@@ -12,7 +12,7 @@ import { useTheme } from '@mui/material/styles';
 
 import { MovieInfo } from '../components';
 
-export default function MovieCard({ _id, poster, ...rest }) {
+export default function MovieCard({ poster, ...other }) {
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
@@ -21,7 +21,6 @@ export default function MovieCard({ _id, poster, ...rest }) {
   return (
     <Grid
       item
-      key={_id}
       // xs={3}
       // sm={6}
       // md={12}
@@ -40,7 +39,7 @@ export default function MovieCard({ _id, poster, ...rest }) {
       >
         <CardMedia
           component="img"
-          image={poster ?? require('../utils/assets/no.jpg')}
+          image={poster ?? require('../assets/no.jpg')}
           alt="No image avaliable"
           sx={{
             // maxWidth: matchesMD ? 340 : 531,
@@ -53,7 +52,7 @@ export default function MovieCard({ _id, poster, ...rest }) {
 
         <CardContent component={Grid} item md>
           {/* <MovieInfo movie={movie} /> */}
-          <MovieInfo {...rest} />
+          <MovieInfo {...other} />
         </CardContent>
       </Card>
     </Grid>
