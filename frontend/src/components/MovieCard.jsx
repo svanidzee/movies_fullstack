@@ -27,17 +27,14 @@ export default function MovieCard({ poster, ...other }) {
             item
             direction="column"
             sx={{
-              width: '420px',
+              width: '770px',
               marginLeft: { xs: 0, sm: '1em' },
             }}
           >
             {Object.entries(other).map(([key, val]) => (
               <Typography variant="body2">
-                <Typography
-                  sx={{ fontWeight: 600, textTransform: 'capitalize' }}
-                  component="span"
-                >
-                  {key}:{''}
+                <Typography variant="title" component="span">
+                  {key}:
                 </Typography>
                 {val}
               </Typography>

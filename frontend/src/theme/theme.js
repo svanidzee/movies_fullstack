@@ -26,8 +26,8 @@ const theme = createTheme({
       },
     },
     title: {
-      fontSize: '1.2rem',
-      fontWeight: 400,
+      fontWeight: 600,
+      textTransform: 'capitalize',
     },
     body2: {
       fontSize: '1rem',
