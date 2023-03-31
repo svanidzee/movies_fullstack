@@ -6,14 +6,14 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
 import theme from './theme';
-import GlobalStyles from './theme/GlobalStyles';
+import Globals from './theme/globals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <GlobalStyles />
+      <Globals />
       <App />
     </ThemeProvider>
   </BrowserRouter>,

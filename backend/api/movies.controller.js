@@ -5,7 +5,7 @@ export default class MoviesController {
     const moviesPerPage = req.query.moviesPerPage
       ? parseInt(req.query.moviesPerPage)
       : 20;
-    const page = req.query.page ? parseInt(req.query.page) : 0;
+    const page = req.query.page ? parseInt(req.query.page) : 1;
 
     let filters = {};
     if (req.query.rated) {

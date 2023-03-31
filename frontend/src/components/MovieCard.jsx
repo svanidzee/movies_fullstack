@@ -6,11 +6,13 @@ import {
   CardMedia,
   Typography,
   useMediaQuery,
+  Box,
+  Button,
 } from '@mui/material';
 import { alpha, styled } from '@mui/material/styles';
 import { useTheme } from '@mui/material/styles';
 
-import { MovieInfo } from '../components';
+import { StyledCardImg } from './CardImage';
 
 export default function MovieCard({ poster, ...other }) {
   const theme = useTheme();
@@ -19,42 +21,44 @@ export default function MovieCard({ poster, ...other }) {
   const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
 
   return (
-    <Grid
-      item
-      // xs={3}
-      // sm={6}
-      // md={12}
-      // sx={{
-      //   maxWidth: 800
-      // }}
-    >
-      <Card
-        sx={{
-          display: 'flex',
-          flexDirection: matchesSM ? 'column' : 'row',
-          padding: 1,
-          // maxWidth: 800,
-          // maxWidth: matchesMD ? 800 : 771,
-        }}
-      >
-        <CardMedia
-          component="img"
-          image={poster ?? require('../assets/no.jpg')}
-          alt="No image avaliable"
-          sx={{
-            // maxWidth: matchesMD ? 340 : 531,
-            maxWidth: '100%',
-            height: 'auto',
-            margin: 0,
-            padding: 0,
-          }}
-        />
+    <Card>
+      <CardContent>
+        <Grid container direction="row" style={{ textAlign: 'center' }}>
+          <Grid item>
+            <CardMedia
+              component="img"
+              image={poster ?? require('../assets/no.jpg')}
+              alt="No image avaliable"
+              sx={{
+                // maxWidth: matchesMD ? 340 : 531,
+                // maxWidth: '100%',
+                // height: 'auto',
+                // margin: 0,
+                // padding: 0,
 
-        <CardContent component={Grid} item md>
-          {/* <MovieInfo movie={movie} /> */}
-          <MovieInfo {...other} />
-        </CardContent>
-      </Card>
-    </Grid>
+                top: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                // position: 'absolute',
+              }}
+            />
+          </Grid>
+          <Grid item direction="column" sx={{ width: '600px', padding: 2 }}>
+            {Object.entries(other).map(([key, val]) => (
+              <Typography variant="body2">
+                <Typography
+                  sx={{ fontWeight: 600, textTransform: 'capitalize' }}
+                  component="span"
+                >
+                  {key}:
+                </Typography>
+                {val}
+              </Typography>
+            ))}
+          </Grid>
+        </Grid>
+      </CardContent>
+    </Card>
   );
 }

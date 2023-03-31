@@ -1,30 +1,58 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Card, CardContent, CardMedia, Typography } from '@mui/material';
+import {
+  Box,
+  Grid,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Stack,
+} from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { StyledCardImg } from './CardImage';
 
-export default function MoviesCard({
-  _id,
-  poster,
-  title,
-  year,
-  imdb: { rating },
-}) {
+const StyledLink = styled(Link)({
+  textDecoration: 'none',
+});
+
+export default function MoviesCard({ movies }) {
+  const {
+    _id,
+    poster,
+    title,
+    year,
+    imdb: { rating },
+  } = movies;
+
   return (
-    <Grid item xs={12} sm={6} md={3}>
-      <Card component={Link} to={`/movies/${_id}`}>
-        <CardMedia
-          component="img"
-          image={poster ?? require('../assets/no.jpg')}
-          alt="No image avaliable"
-        />
-
-        <CardContent component={Grid} item xs container>
-          <Typography variant="subtitle2">
+    <Card>
+      <StyledLink to={`/movies/${_id}`}>
+        <Box sx={{ pt: '100%', position: 'relative' }}>
+          <StyledCardImg
+            alt="adsad"
+            src={poster ?? require('../assets/no.jpg')}
+          />
+        </Box>
+        <Stack
+          direction="row"
+          alignItems="start"
+          justifyContent="space-between"
+          sx={{
+            maxWidth: '470px',
+            maxHeight: '80px',
+            minHeight: '80px',
+            padding: '20px',
+          }}
+        >
+          <Typography variant="subtitle2" color="#0f1702">
             {title}({year})
           </Typography>
-          <Typography variant="subtitle2">{rating}</Typography>
-        </CardContent>
-      </Card>
-    </Grid>
+          <Typography variant="subtitle2" color="#0f1702">
+            {rating}
+          </Typography>
+        </Stack>
+      </StyledLink>
+    </Card>
   );
 }

@@ -41,7 +41,7 @@ export default class MoviesDAO {
 
   static async getMovies({
     filters = null,
-    page = 0,
+    page = 1,
     moviesPerPage = 20,
   } = {}) {
     let query;

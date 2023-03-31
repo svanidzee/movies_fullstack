@@ -14,7 +14,7 @@ export default function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<MainLayout />}>
-            <Route path="" element={<Movies />} />
+            <Route path="/" element={<Movies />} />
             <Route path="/movies/:id" element={<Movie />} />
           </Route>
         </Routes>
