@@ -9,11 +9,12 @@ const typography = {
   fontWeightMedium: 500,
 
   caption: {
-    fontSize: '2rem',
-    fontWeight: 300,
+    fontSize: '1.2rem',
+    fontWeight: 400,
     textTransform: 'uppercase',
+    // textAlign: 'right',
     [breakpoints.down('md')]: {
-      fontSize: '1.3rem',
+      fontSize: '1.1rem',
     },
   },
   title: {
@@ -29,8 +30,7 @@ const typography = {
   subtitle2: {
     fontSize: '1.1rem',
     fontWeight: 600,
+    color: '#0f1702',
   },
 };
 export default typography;
-
-// 1 vagoni 72 73

@@ -1,6 +1,5 @@
 import React from 'react';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import { Box, CircularProgress } from '@mui/material';
 
 const QueryResult = ({ loading, error, data, children }) => {
   if (error) {

@@ -1,14 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Box,
-  Grid,
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-  Stack,
-} from '@mui/material';
+import { Box, Card, Typography, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { StyledCardImg } from './CardImage';
 
@@ -31,7 +22,7 @@ export default function MoviesCard({ movies }) {
         <Box sx={{ pt: '100%', position: 'relative' }}>
           <StyledCardImg
             alt="adsad"
-            src={poster ?? require('../assets/no.jpg')}
+            src={poster ?? require('../assets/img/no.jpg')}
           />
         </Box>
         <Stack
@@ -45,12 +36,10 @@ export default function MoviesCard({ movies }) {
             padding: '20px',
           }}
         >
-          <Typography variant="subtitle2" color="#0f1702">
+          <Typography variant="subtitle2">
             {title}({year})
           </Typography>
-          <Typography variant="subtitle2" color="#0f1702">
-            {rating}
-          </Typography>
+          <Typography variant="subtitle2">{rating}</Typography>
         </Stack>
       </StyledLink>
     </Card>

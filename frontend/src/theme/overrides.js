@@ -71,18 +71,13 @@ const components = {
   MuiCard: {
     styleOverrides: {
       root: {
-        // height: '100%',
-        // display: 'flex',
-        // flexDirection: 'column',
         textDecoration: 'none',
-        // borderColor: 'red',
         boxShadow: `0 0 2px 0 ${alpha(
           '#919EAB',
           0.2,
         )}, 0 12px 24px -4px ${alpha('#919EAB', 0.12)}`,
         borderRadius: 12,
         position: 'relative',
-        // zIndex: 0,
       },
     },
   },
