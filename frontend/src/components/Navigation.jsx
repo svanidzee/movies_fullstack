@@ -13,7 +13,7 @@ export default function Navigation({ currentPage, setCurrentPage }) {
       sx={{ paddingY: 5 }}
     >
       <Pagination
-        count={10}
+        count={100}
         shape="rounded"
         page={currentPage}
         onChange={handleChange}
