@@ -2,11 +2,7 @@ import { Grid, Card, CardContent, CardMedia, Typography } from '@mui/material';
 
 export default function MovieCard({ poster, ...other }) {
   return (
-    <Card
-      sx={{
-        backgroundColor: 'green',
-      }}
-    >
+    <Card>
       <CardContent>
         <Grid
           sx={{

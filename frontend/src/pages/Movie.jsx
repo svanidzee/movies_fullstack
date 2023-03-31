@@ -9,6 +9,7 @@ export default function Movie() {
   const { movie, error, isLoaded } = useFetchMovie(id);
   const { title, year, directors, genres, cast, fullplot, imdb, poster } =
     movie;
+
   return (
     <QueryResult error={error} loading={isLoaded} data={movie}>
       <Container>
